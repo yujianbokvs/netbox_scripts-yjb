@@ -1,0 +1,28 @@
+---
+- name: Create RIRs
+  netbox.netbox.netbox_rir:
+    netbox_url: "{{ lookup('ansible.builtin.env', 'NETBOX_API') }}"
+    netbox_token: "{{ lookup('ansible.builtin.env', 'NETBOX_TOKEN') }}"
+    data: "{{ rir }}"
+    state: present
+  loop: "{{ ipam_rirs }}"
+  loop_control:
+    loop_var: rir
+    label: "{{ rir['name']}}"
+#---
+#- name: Run NetBox tasks with environment variables
+#  hosts: localhost
+#  tasks:
+#    - name: Create RIRs
+#      netbox.netbox.netbox_rir:
+#        netbox_url: "{{ lookup('ansible.builtin.env', 'NETBOX_API') }}"
+#        netbox_token: "{{ lookup('ansible.builtin.env', 'NETBOX_TOKEN') }}"
+#        data: "{{ rir }}"
+#        state: present
+#      loop: "{{ ipam_rirs }}"
+#      loop_control:
+#        loop_var: rir
+#        label: "{{ rir['name'] }}"
+#      environment:
+#        NETBOX_TOKEN: "90d3b55069dcbc8523d4bea79c8c72e55cc0a5d3"
+#        NETBOX_API: "http://192.168.219.42:8000"

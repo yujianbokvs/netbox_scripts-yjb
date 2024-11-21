@@ -1,0 +1,5 @@
+---
+vlan_groups:
+  - name: Kevins_vlan
+    scope_type: dcim.site
+    scope: KVS-SH-site`

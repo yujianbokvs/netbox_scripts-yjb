@@ -1,0 +1,126 @@
+#
+#
+#
+#
+#interfaces:
+#  - device: Nexus_9364-1
+#    enabled: yes
+#    type: virtual
+#    name: vlan.10
+#  - device: Nexus_9364-1
+#    enabled: yes
+#    type: virtual
+#    name: vlan.20
+#  - device: Nexus_9364-1
+#    enabled: yes
+#    type: virtual
+#    name: vlan.30
+#  - device: Nexus_9364-1
+#    enabled: yes
+#    type: virtual
+#    name: vlan.40
+#  - device: Nexus_9364-1
+#    enabled: yes
+#    type: virtual
+#    name: vlan.50
+#
+#  - device: Nexus_9364-2
+#    enabled: yes
+#    type: virtual
+#    name: vlan.10
+#  - device: Nexus_9364-2
+#    enabled: yes
+#    type: virtual
+#    name: vlan.20
+#  - device: Nexus_9364-2
+#    enabled: yes
+#    type: virtual
+#    name: vlan.30
+#  - device: Nexus_9364-2
+#    enabled: yes
+#    type: virtual
+#    name: vlan.40
+#  - device: Nexus_9364-2
+#    enabled: yes
+#    type: virtual
+#    name: vlan.50
+#
+#  - device: Nexus_9364-3
+#    enabled: yes
+#    type: virtual
+#    name: vlan.10
+#  - device: Nexus_9364-3
+#    enabled: yes
+#    type: virtual
+#    name: vlan.20
+#  - device: Nexus_9364-3
+#    enabled: yes
+#    type: virtual
+#    name: vlan.30
+#  - device: Nexus_9364-3
+#    enabled: yes
+#    type: virtual
+#    name: vlan.40
+#  - device: Nexus_9364-3
+#    enabled: yes
+#    type: virtual
+#    name: vlan.50
+#
+#  - device: Nexus_9364-4
+#    enabled: yes
+#    type: virtual
+#    name: vlan.10
+#  - device: Nexus_9364-4
+#    enabled: yes
+#    type: virtual
+#    name: vlan.20
+#  - device: Nexus_9364-4
+#    enabled: yes
+#    type: virtual
+#    name: vlan.30
+#  - device: Nexus_9364-4
+#    enabled: yes
+#    type: virtual
+#    name: vlan.40
+#  - device: Nexus_9364-4
+#    enabled: yes
+#    type: virtual
+#    name: vlan.50
+
+
+
+interfaces:
+  - device: Nexus_9364-1
+    enabled: yes
+    type: virtual
+    name: vlan.10
+  - device: Nexus_9364-1
+    enabled: yes
+    type: virtual
+    name: vlan.20
+
+
+
+  - device: Nexus_9364-2
+    enabled: yes
+    type: virtual
+    name: vlan.30
+  - device: Nexus_9364-2
+    enabled: yes
+    type: virtual
+    name: vlan.40
+
+
+
+  - device: Nexus_9364-3
+    enabled: yes
+    type: virtual
+    name: vlan.50
+  - device: Nexus_9364-3
+    enabled: yes
+    type: virtual
+    name: vlan.60
+
+
+
+

@@ -1,0 +1,39 @@
+
+#安装ssh
+在 Rocky Linux 9.4 中开启 SSH 功能，可以按照以下步骤进行：
+
+1. **安装 OpenSSH Server**（如果还未安装）：
+   ```bash
+   sudo dnf install -y openssh-server
+   ```
+
+2. **启动并启用 SSH 服务**：
+   使用以下命令启动 SSH 服务，并设置为开机自动启动：
+   ```bash
+   sudo systemctl start sshd
+   sudo systemctl enable sshd
+   ```
+
+3. **检查防火墙配置**：
+   确保防火墙允许 SSH 连接。执行以下命令开启防火墙对 SSH 的访问：
+   ```bash
+   sudo firewall-cmd --permanent --add-service=ssh
+   sudo firewall-cmd --reload
+   ```
+
+4. **验证 SSH 服务状态**：
+   使用以下命令确认 SSH 服务是否在运行：
+   ```bash
+   sudo systemctl status sshd
+   ```
+
+#安装python3.12 升级pip3
+sudo dnf install -y python3.12
+
+python3.12 -m ensurepip --upgrade
+
+
+sudo ln -sf /usr/local/bin/pip3.12 /usr/bin/pip3
+
+
+pip3 --version

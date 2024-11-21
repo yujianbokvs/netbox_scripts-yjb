@@ -1,0 +1,14 @@
+services:
+  fastapi:
+    build: .
+    privileged: true
+    ports:
+      - "8443:8443"
+      - "8066:8066"
+    restart: always
+    networks:
+      - qyt_net
+
+networks:
+  qyt_net:
+#    external: true

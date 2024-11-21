@@ -1,0 +1,16 @@
+---
+
+- name: PLAY 1 - Create VLAN Interfaces
+  connection: local
+  hosts: localhost
+  gather_facts: False
+
+  roles:
+    - role: PLAY_8_create_virtual_vlan_interfaces
+      tags: PLAY_8_create_virtual_vlan_interfaces
+
+
+
+
+
+

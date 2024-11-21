@@ -1,0 +1,82 @@
+name: slurpit
+services:
+  slurpit-warehouse:
+    image: slurpit/warehouse:latest
+    container_name: slurpit-warehouse
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/services"]
+      interval: 10s
+      timeout: 10s
+      retries: 360
+    networks:
+      - slurpit-network
+    environment:
+      TZ: Europe/Amsterdam
+      WAREHOUSE_CALLBACK_SCANNER_URL: http://slurpit-portal/callback/scanner
+      WAREHOUSE_CALLBACK_SCANNER_TOKEN:
+      WAREHOUSE_CALLBACK_SCRAPER_URL: http://slurpit-portal/callback/scraper
+      WAREHOUSE_CALLBACK_SCRAPER_TOKEN:
+    volumes:
+      - ./db/warehouse:/var/lib/mongodb:Z
+      - ./logs/warehouse/mongodb:/var/log/mongodb:Z
+      - ./logs/warehouse:/logs:Z
+    restart: always
+
+  slurpit-scraper:
+    image: slurpit/scraper:latest
+    container_name: slurpit-scraper
+    depends_on:
+      slurpit-warehouse:
+        condition: service_healthy
+    networks:
+      - slurpit-network
+    environment:
+      TZ: Europe/Amsterdam
+      SCRAPER_TIMEOUT: 20
+      SCRAPER_POOLSIZE: 8
+      SCRAPER_WAREHOUSE_URL: http://slurpit-warehouse
+    volumes:
+      - ./logs/scraper:/logs:Z
+    restart: always
+
+  slurpit-scanner:
+    image: slurpit/scanner:latest
+    container_name: slurpit-scanner
+    depends_on:
+      slurpit-warehouse:
+        condition: service_healthy
+    networks:
+      - slurpit-network
+    environment:
+      TZ: Europe/Amsterdam
+      SCANNER_POOLSIZE: 8
+      SCANNER_TIMEOUT: 10
+      SCANNER_WAREHOUSE_URL: http://slurpit-warehouse
+    volumes:
+      - ./logs/scanner:/logs:Z
+    restart: always
+
+  slurpit-portal:
+    image: slurpit/portal:latest
+    container_name: slurpit-portal
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      - slurpit-network
+    environment:
+      PORTAL_BASE_URL: http://localhost
+      PORTAL_WAREHOUSE_URL: http://slurpit-warehouse
+      TZ: Europe/Amsterdam
+    volumes:
+      - ./logs/nginx:/var/log/nginx/:Z
+      - ./logs/mysql:/var/log/mysql/:Z
+      - ./logs/php:/var/log/php/:Z
+      - ./certs:/etc/nginx/certs/:Z
+      - ./db/portal:/var/lib/mysql:Z
+    restart: always
+
+networks:
+  slurpit-network:
+    driver: bridge
+

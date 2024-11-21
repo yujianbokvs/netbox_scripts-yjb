@@ -1,0 +1,37 @@
+#NX9300:
+#  Nexus_9364-1:
+    interfaces:
+      - interface_name: "Ethernet1/28"
+        vlan_name: "DATA"
+        vlan_vid: 10
+      - interface_name: "Ethernet1/29"
+        vlan_name: "DATA"
+        vlan_vid: 10
+      - interface_name: "Ethernet1/30"
+        vlan_name: "DATA"
+        vlan_vid: 10
+
+  Nexus_9364-2:
+    interfaces:
+      - interface_name: "Ethernet1/28"
+        vlan_name: "VOICE"
+        vlan_vid: 20
+      - interface_name: "Ethernet1/29"
+        vlan_name: "VOICE"
+        vlan_vid: 20
+      - interface_name: "Ethernet1/30"
+        vlan_name: "VOICE"
+        vlan_vid: 20
+
+  Nexus_9364-3:
+    interfaces:
+      - interface_name: "Ethernet1/28"
+        vlan_name: "B_WIFI"
+        vlan_vid: 30
+      - interface_name: "Ethernet1/29"
+        vlan_name: "B_WIFI"
+        vlan_vid: 30
+      - interface_name: "Ethernet1/30"
+        vlan_name: "B_WIFI"
+        vlan_vid: 30
+

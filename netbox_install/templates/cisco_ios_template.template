@@ -1,0 +1,21 @@
+hostname {{ device.name }}
+!
+{% for interface in device.interfaces.all() %}
+interface {{ interface.name }}
+{% if interface.enabled %}
+  no shutdown
+{% else %}
+  shutdown
+{% endif %}
+{% for ip in interface.ip_addresses.all() %}
+  ip address {{ ip.address.ip }} 255.255.255.0
+{% endfor %}
+!
+{% endfor %}
+
+
+router ospf {{ ospf_process_id }}
+    router-id {{ ospf_router_id }}
+    {% for n in ospf_network_list %}
+      network {{ n.network }} {{ n.wildmask }} area {{ n.area }}
+    {% endfor %}

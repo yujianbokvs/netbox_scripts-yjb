@@ -1,0 +1,15 @@
+要让这些环境变量在系统启动时自动加载，可以将它们添加到系统的环境配置文件中，具体步骤如下：
+
+
+bash
+复制代码
+sudo vim /etc/environment
+在文件末尾添加以下两行：
+
+export NETBOX_TOKEN="ad3d1d1a2104bef59c7e5b3e7af7475b0a9d7942"
+export NETBOX_API="http://192.168.219.41:8000"
+
+保存并关闭文件。此文件中的变量会在系统启动时加载，适用于所有用户。
+
+重启系统以生效，也可以通过以下命令重新加载：
+source /etc/environment

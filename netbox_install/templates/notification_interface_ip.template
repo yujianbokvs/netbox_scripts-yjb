@@ -1,0 +1,6 @@
+如下的Netbox接口, IP配置不匹配
+
+{% for interface in failed %}
+* `{{ interface.name }}`
+{% endfor %}
+

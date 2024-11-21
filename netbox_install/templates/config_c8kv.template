@@ -1,0 +1,25 @@
+hostname {{ device.name }}
+!
+lldp run
+!
+{% for interface in device.interfaces.all() %}
+interface {{ interface.name }}
+{% if interface.enabled %}
+  no shutdown
+{% else %}
+  shutdown
+{% endif %}
+  lldp receive
+  lldp transmit
+{% for ip in interface.ip_addresses.all() %}
+  ip address {{ ip.address.ip }} 255.255.255.0
+{% endfor %}
+!
+{% endfor %}
+
+
+router ospf {{ device.local_context_data.router.ospf.process_id }}
+    router-id {{ device.local_context_data.router.ospf.router_id }}
+    {% for n in device.local_context_data.router.ospf.network_list %}
+      network {{ n.network }} {{ n.wildmask }} area {{ n.area }}
+    {% endfor %}

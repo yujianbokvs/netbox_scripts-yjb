@@ -1,0 +1,9 @@
+---
+
+- name: PLAY 1 - Assign IP Address Per Interface
+  connection: local
+  hosts: localhost
+  gather_facts: False
+  roles:
+    - role: PLAY_10_assign_ip_addresses
+      tags: PLAY_10_assign_ip_addresses

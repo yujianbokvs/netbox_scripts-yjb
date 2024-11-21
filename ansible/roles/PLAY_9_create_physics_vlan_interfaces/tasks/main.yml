@@ -1,0 +1,16 @@
+- name: "Assign VLAN to interface"
+  netbox.netbox.netbox_device_interface:  # 使用 netbox_device_interface 模块
+    netbox_url: "{{ lookup('ansible.builtin.env', 'NETBOX_API') }}"
+    netbox_token: "{{ lookup('ansible.builtin.env', 'NETBOX_TOKEN') }}"
+    data:
+      name: "{{ interface.interface_name }}"  # 接口名称
+      device: "{{ interface.device_name }}"      # 使用 inventory 中的设备名称
+      mode:  "{{interface.mode }}"                    # 接口模式 (access 或 trunk)
+      untagged_vlan:
+        name: "{{ interface.vlan_name }}"     # 分配的 VLAN 名称
+        vid: "{{ interface.vlan_vid }}"       # VLAN ID
+    state: present
+  loop: "{{ interfaces }}"  # 正确引用 interfaces 列表
+  loop_control:
+    loop_var: "interface"  # 定义变量名为 interface
+    label: "{{ interface.vlan_vid }}"  # 直接引用 interface 中的 vlan_vid

@@ -1,0 +1,8 @@
+side_a_device,side_a_type,side_a_name,side_b_device,side_b_type,side_b_name,type,status,tenant,color,length,length_unit
+ Nexus_9364-3,dcim.interface,Ethernet1/1, Nexus_9364-4,dcim.interface,Ethernet1/1,cat6,planned,,ff0000,0.5,m
+ Nexus_9364-3,dcim.interface,Ethernet1/2, Nexus_9364-4,dcim.interface,Ethernet1/2,cat6,planned,,ff0000,0.5,m
+ Nexus_9364-3,dcim.interface,Ethernet1/3, Nexus_9364-4,dcim.interface,Ethernet1/3,cat6,planned,,ff0000,0.5,m
+ Nexus_9364-3,dcim.interface,Ethernet1/4, Nexus_9364-4,dcim.interface,Ethernet1/4,cat6,planned,,4287f5,1,m
+ Nexus_9364-3,dcim.interface,Ethernet1/5, Nexus_9364-4,dcim.interface,Ethernet1/5,cat6,planned,,4287f5,1,m
+ Nexus_9364-3,dcim.interface,Ethernet1/6, Nexus_9364-4,dcim.interface,Ethernet1/6,cat6,planned,,ce42f5,0.5,m
+ Nexus_9364-3,dcim.interface,Ethernet1/7, Nexus_9364-4,dcim.interface,Ethernet1/7,cat6,planned,,ce42f5,0.5,m
