@@ -42,7 +42,30 @@ class BulkCreateInterfaces(Script):
         description="VLAN 名称",
         required=False  # 设置为可选
     )
+     def send_http_notification(self, interface_name, device_name, status, vlan_name=None):
+        """
+        发送 HTTP POST 请求到指定 URL
+        """
+        url = "http://192.168.219.41:8066/netbox_create_interface_webhook"  # 替换为实际的目标 URL
+        headers = {
+            "Authorization": "Bearer your-token-here",  # 替换为实际的认证 Token
+            "Content-Type": "application/json"
+        }
+        payload = {
+            "interface_name": interface_name,
+            "device_name": device_name,
+            "status": status,
+            "vlan_name": vlan_name
+        }
 
+        try:
+            response = requests.post(url, json=payload, headers=headers)
+            if response.status_code == 200:
+                self.log_info(f"HTTP 通知成功：{response.json()}")
+            else:
+                self.log_warning(f"HTTP 通知失败，状态码：{response.status_code}，内容：{response.text}")
+        except Exception as e:
+            self.log_failure(f"发送 HTTP 通知时发生错误：{e}")
     def run(self, data, commit):
         device_name = data['device_name']
         interface_prefix = data['interface_prefix']
