@@ -1,6 +1,0 @@
-如下的Netbox接口, 激活状态不匹配
-
-{% for interface in failed %}
-* `{{ interface.name }}`
-{% endfor %}
-

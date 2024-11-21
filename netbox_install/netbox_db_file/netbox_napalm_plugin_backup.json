@@ -1,1 +1,0 @@
-[{"model": "netbox_napalm_plugin.napalmplatformconfig", "pk": 1, "fields": {"created": "2024-08-11T01:36:27.638Z", "last_updated": "2024-08-11T01:36:27.638Z", "custom_field_data": {}, "platform": 1, "napalm_driver": "ios", "napalm_args": null}}]

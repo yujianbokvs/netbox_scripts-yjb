@@ -1,8 +1,0 @@
-/portal
-/logs
-/db
-/certs/*.crt
-/certs/*.csr
-/certs/*.key
-docker-compose.override.yml
-/~$*.docx
